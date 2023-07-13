@@ -18,6 +18,38 @@ db.init_app(app)
 def home():
     return '<h1>Bakery GET-POST-PATCH-DELETE API</h1>'
 
+@app.route('/movies', methods=['GET'])
+def movies():
+    if request.method == 'GET':
+        movies = Movie.query.all()
+
+        return make_response(
+            jsonify([movie.to_dict() for movie in movies]),
+            200,
+        )
+
+    return make_response(
+        jsonify({"text": "Method Not Allowed"}),
+        405,
+    ) 
+@app.route('/movies', methods=['GET'])
+def movies():
+    if request.method == 'GET':
+        movies = Movie.query.all()
+
+        return make_response(
+            jsonify([movie.to_dict() for movie in movies]),
+            200,
+        )
+
+    return make_response(
+        jsonify({"text": "Method Not Allowed"}),
+        405,
+    ) 
+
+
+
+
 @app.route('/bakeries')
 def bakeries():
 
